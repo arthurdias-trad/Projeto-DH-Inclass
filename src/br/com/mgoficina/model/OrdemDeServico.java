@@ -50,13 +50,7 @@ public class OrdemDeServico {
 	public void setMetodoDePagamento(String metodoDePagamento) {
 		this.metodoDePagamento = metodoDePagamento;
 	}
-	public String getCliente() {
-		return cliente;
-	}
-	public void setCliente(String cliente) {
-		this.cliente = cliente;
-	}
-	
+		
 	public OrdemDeServico(UUID idOrdemServico, String nomeServico, LocalDate inicioServico, LocalDate fimServico,
 			Double valor, String metodoDePagamento, Cliente cliente) {
 		this.idOrdemServico = idOrdemServico;
