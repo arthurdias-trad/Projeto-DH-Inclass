@@ -3,6 +3,7 @@ package br.com.mgoficina.service.impl;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.UUID;
 
 import br.com.mgoficina.model.Cliente;
 import br.com.mgoficina.service.IClienteService;
@@ -26,7 +27,13 @@ public class ClienteServiceImpl implements IClienteService{
 	}
 
 	@Override
-	public Cliente findClienteById(int indice) {
+	public Cliente findClienteById(UUID idDoCliente) {
+		for(Cliente cliente: this.clientes) {
+			if(cliente.getIdDoCliente().equals(idDoCliente)) {
+				return cliente;
+			}
+		}
+		
 		return null;
 	}
 
@@ -66,7 +73,7 @@ public class ClienteServiceImpl implements IClienteService{
 	}
 
 	@Override
-	public boolean deleteCliente(int indice) {
+	public boolean deleteCliente(UUID idDoCliente) {
 		return false;
 	}
 	
