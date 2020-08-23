@@ -22,6 +22,7 @@ public class ClienteServiceImpl implements IClienteService{
 	
 	@Override
 	public Cliente create(Cliente cliente) {
+		cliente.setIdDoCliente(UUID.randomUUID());
 		this.clientes.add(cliente);
 		return cliente;
 	}
@@ -73,8 +74,13 @@ public class ClienteServiceImpl implements IClienteService{
 	}
 
 	@Override
-	public boolean deleteCliente(UUID idDoCliente) {
-		return false;
+	public boolean deleteCliente(Cliente cliente) {
+		if (this.clientes.contains(cliente)) {
+			this.clientes.remove(cliente);
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
 	

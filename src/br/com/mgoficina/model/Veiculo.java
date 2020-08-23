@@ -11,17 +11,17 @@ public class Veiculo {
 	private LocalDate ano;
 	private String chassi;
 	private String tipoDeVeiculo;
-	//private String proprietario;
+	private Cliente proprietario;
 	
 	
-	public Veiculo(String placaDoVeiculo, String modelo, String cor, LocalDate ano, String chassi, String tipoDeVeiculo, String proprietario) {
+	public Veiculo(String placaDoVeiculo, String modelo, String cor, LocalDate ano, String chassi, String tipoDeVeiculo, Cliente proprietario) {
 		this.placaDoVeiculo = placaDoVeiculo;
 		this.modelo = modelo;
 		this.cor = cor;
 		this.ano = ano;
 		this.chassi = chassi;
 		this.tipoDeVeiculo = tipoDeVeiculo;
-		//this.proprietario = this.IdDoCliente;
+		this.proprietario = proprietario;
 	}
 
 	public String getPlacaDoVeiculo() {
@@ -71,4 +71,28 @@ public class Veiculo {
 	public void setTipoDeVeiculo(String tipoDeVeiculo) {
 		this.tipoDeVeiculo = tipoDeVeiculo;
 	}
+
+	public Cliente getProprietario() {
+		return proprietario;
+	}
+
+	public void setProprietario(Cliente proprietario) {
+		this.proprietario = proprietario;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null || !(obj instanceof Veiculo)) {
+			return false;
+		}
+		
+		Veiculo other = (Veiculo) obj;
+		
+		return other.chassi.equals(this.chassi);
+	}
+	
+	
 }

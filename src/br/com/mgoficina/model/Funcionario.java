@@ -1,5 +1,6 @@
 package br.com.mgoficina.model;
 
+import java.util.List;
 import java.util.UUID;
 
 public class Funcionario {
@@ -9,16 +10,17 @@ public class Funcionario {
 	private int idade;
 	private char sexo;
 	private String cargo;
-	private UUID idDoCliente;
+	private UUID idDoFuncionario;
+	private List<Servico> servicos;
 	
-	public Funcionario(String nome, String cpf, int idade, char sexo, String cargo) {
+	public Funcionario(String nome, String cpf, int idade, char sexo, String cargo, UUID idDoFuncionario) {
 		super();
 		this.nome = nome;
 		this.cpf = cpf;
 		this.idade = idade;
 		this.sexo = sexo;
 		this.cargo = cargo;
-		this.idDoCliente = UUID.randomUUID();
+		this.idDoFuncionario = idDoFuncionario;
 	}
 
 	public String getNome() {
@@ -60,6 +62,37 @@ public class Funcionario {
 	public void setCargo(String cargo) {
 		this.cargo = cargo;
 	}
+
+	public UUID getIdDoFuncionario() {
+		return idDoFuncionario;
+	}
+
+	public void setIdDoFuncionario(UUID idDoFuncionario) {
+		this.idDoFuncionario = idDoFuncionario;
+	}
+
+	public List<Servico> getServicos() {
+		return servicos;
+	}
+
+	public void setServicos(List<Servico> servicos) {
+		this.servicos = servicos;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null || !(obj instanceof Funcionario)) {
+			return false;
+		}
+		
+		Funcionario other = (Funcionario) obj;
+		
+		return this.idDoFuncionario.equals(other.idDoFuncionario);
+	}
+	
 	
 	
 }

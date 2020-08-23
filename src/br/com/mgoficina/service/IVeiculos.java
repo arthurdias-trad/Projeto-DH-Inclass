@@ -9,6 +9,8 @@ public interface IVeiculos {
 	
 	public String infoVeiculo (Veiculo veiculo);
 	
+	public Veiculo findByChassis(String chassis);
+	
 	public void atualizarCadastroVeiculo (Veiculo veiculo);
 	
 	public void removerCadastroVeiculo (Veiculo veiculo);

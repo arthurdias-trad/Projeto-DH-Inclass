@@ -12,6 +12,6 @@ public interface IClienteService {
 	public Cliente findClienteByNome(String nome);
 	public List<Cliente> findAll();
 	public boolean updateCliente(Cliente cliente);
-	public boolean deleteCliente(UUID idDoCliente);
+	public boolean deleteCliente(Cliente cliente);
 	
 }

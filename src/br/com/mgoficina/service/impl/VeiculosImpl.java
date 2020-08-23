@@ -55,6 +55,12 @@ public class VeiculosImpl implements IVeiculos {
 		"Chassi: " + chassi;
 		return info;
 		}
+	
+	@Override
+	public Veiculo findByChassis(String chassis) {
+		// TODO Auto-generated method stub
+		return null;
+	} 
 
 	@Override
 	public void atualizarCadastroVeiculo(Veiculo veiculo) {
@@ -79,8 +85,7 @@ public class VeiculosImpl implements IVeiculos {
 			System.out.println("Veiculo ainda não cadastrado no sistema");
 		}
 		
-	} 
-	
+	}
 	
 
 }

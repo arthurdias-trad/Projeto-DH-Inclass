@@ -1,5 +1,6 @@
 package br.com.mgoficina.model;
 
+import java.util.ArrayList;
 import java.util.UUID;
 
 public class Cliente {
@@ -9,14 +10,16 @@ public class Cliente {
 	private int idade;
 	private char sexo;
 	private UUID idDoCliente;
+	private ArrayList<Veiculo> veiculos;
 	
-	public Cliente(String nome, String cpf, int idade, char sexo) {
+	public Cliente(String nome, String cpf, int idade, char sexo, ArrayList<Veiculo> veiculos) {
 		super();
 		this.nome = nome;
 		this.cpf = cpf;
 		this.idade = idade;
 		this.sexo = sexo;
-		this.idDoCliente = UUID.randomUUID();
+		this.veiculos = veiculos;
+		this.idDoCliente = null;
 	}
 
 	public String getNome() {
@@ -51,8 +54,20 @@ public class Cliente {
 		this.sexo = sexo;
 	}
 	
+	public ArrayList<Veiculo> getVeiculos() {
+		return veiculos;
+	}
+
+	public void setVeiculos(ArrayList<Veiculo> veiculos) {
+		this.veiculos = veiculos;
+	}
+
 	public UUID getIdDoCliente() {
 		return idDoCliente;
+	}
+	
+	public void setIdDoCliente(UUID idDoCliente) {
+		this.idDoCliente = idDoCliente;
 	}
 	
 	@Override

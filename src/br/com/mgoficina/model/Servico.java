@@ -4,9 +4,9 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
-public class OrdemDeServico {
+public class Servico {
 	
-	private UUID idOrdemServico;
+	private UUID idServico;
 	private String nomeServico;
 	private LocalDate inicioServico;
 	private LocalDate fimServico;
@@ -16,11 +16,11 @@ public class OrdemDeServico {
 	private Veiculo veiculo;
 	
 		
-	public UUID getIdOrdemServico() {
-		return idOrdemServico;
+	public UUID getIdDoServico() {
+		return idServico;
 	}
-	public void setIdOrdemServico(UUID idOrdemServico) {
-		this.idOrdemServico = idOrdemServico;
+	public void setIdDoServico(UUID idServico) {
+		this.idServico = idServico;
 	}
 	public String getNomeServico() {
 		return nomeServico;
@@ -67,9 +67,9 @@ public class OrdemDeServico {
 		this.veiculo = veiculo;
 	}
 	
-	public OrdemDeServico(UUID idOrdemServico, String nomeServico, LocalDate inicioServico, LocalDate fimServico,
+	public Servico(String nomeServico, LocalDate inicioServico, LocalDate fimServico,
 			Double valor, String metodoDePagamento, Cliente cliente, Veiculo veiculo) {
-		this.idOrdemServico = idOrdemServico;
+		this.idServico = null;
 		this.nomeServico = nomeServico;
 		this.inicioServico = inicioServico;
 		this.fimServico = fimServico;
@@ -88,8 +88,8 @@ public class OrdemDeServico {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		OrdemDeServico other = (OrdemDeServico) obj;
-		if (idOrdemServico != other.idOrdemServico)
+		Servico other = (Servico) obj;
+		if (idServico != other.idServico)
 			return false;
 		return true;
 	}
@@ -97,7 +97,7 @@ public class OrdemDeServico {
 	@Override
 	public String toString() {
 		StringBuilder string = new StringBuilder();
-		string.append("\n             ID: " + this.getIdOrdemServico() + "\n");
+		string.append("\n             ID: " + this.getIdDoServico() + "\n");
 		string.append("     Data de Início: " + this.getInicioServico() + "\n");
 		string.append("        Data de Término: " + this.getFimServico() + "\n");
 		string.append("          Valor: " + this.getValor() + "\n");
