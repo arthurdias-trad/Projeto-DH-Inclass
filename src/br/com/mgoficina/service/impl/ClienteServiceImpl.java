@@ -12,8 +12,6 @@ public class ClienteServiceImpl implements IClienteService{
 
 	private List<Cliente> clientes;
 	
-	
-	
 	public ClienteServiceImpl() {
 		clientes = new ArrayList<Cliente>();
 	}
@@ -21,7 +19,6 @@ public class ClienteServiceImpl implements IClienteService{
 		this.clientes = new ArrayList<>(clientes);
 	} 
 	
-		
 	
 	@Override
 	public Cliente create(Cliente cliente) {

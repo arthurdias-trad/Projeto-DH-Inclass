@@ -1,5 +1,7 @@
 package br.com.mgoficina.model;
 
+import java.util.UUID;
+
 public class Funcionario {
 	
 	private String nome;
@@ -7,6 +9,7 @@ public class Funcionario {
 	private int idade;
 	private char sexo;
 	private String cargo;
+	private UUID idDoCliente;
 	
 	public Funcionario(String nome, String cpf, int idade, char sexo, String cargo) {
 		super();
@@ -15,6 +18,7 @@ public class Funcionario {
 		this.idade = idade;
 		this.sexo = sexo;
 		this.cargo = cargo;
+		this.idDoCliente = UUID.randomUUID();
 	}
 
 	public String getNome() {
