@@ -1,32 +1,34 @@
 package br.com.mgoficina.model;
 import java.time.LocalDate;
 import java.util.UUID;
+import br.com.mgoficina.model.Cliente;
 
 public class Veiculo {
 	
-	private UUID placaDoVeiculo;
+	private String placaDoVeiculo;
 	private String modelo;
 	private String cor;
 	private LocalDate ano;
-	private UUID chassi;
+	private String chassi;
 	private String tipoDeVeiculo;
-	private Cliente cliente;
+	//private String proprietario;
 	
-	public Veiculo(UUID placaDoVeiculo, String modelo, String cor, LocalDate ano, UUID chassi, String tipoDeVeiculo, Cliente cliente) {
+	
+	public Veiculo(String placaDoVeiculo, String modelo, String cor, LocalDate ano, String chassi, String tipoDeVeiculo, String proprietario) {
 		this.placaDoVeiculo = placaDoVeiculo;
 		this.modelo = modelo;
 		this.cor = cor;
 		this.ano = ano;
 		this.chassi = chassi;
 		this.tipoDeVeiculo = tipoDeVeiculo;
-		this.cliente = cliente;
+		//this.proprietario = this.IdDoCliente;
 	}
 
-	public UUID getPlacaDoVeiculo() {
+	public String getPlacaDoVeiculo() {
 		return placaDoVeiculo;
 	}
 
-	public void setPlacaDoVeiculo(UUID placaDoVeiculo) {
+	public void setPlacaDoVeiculo(String placaDoVeiculo) {
 		this.placaDoVeiculo = placaDoVeiculo;
 	}
 
@@ -54,11 +56,11 @@ public class Veiculo {
 		this.ano = ano;
 	}
 
-	public UUID getChassi() {
+	public String getChassi() {
 		return chassi;
 	}
 
-	public void setChassi(UUID chassi) {
+	public void setChassi(String chassi) {
 		this.chassi = chassi;
 	}
 
