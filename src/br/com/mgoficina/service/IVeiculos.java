@@ -1,19 +1,17 @@
 package br.com.mgoficina.service;
 
+import java.util.List;
 import br.com.mgoficina.model.Cliente;
 import br.com.mgoficina.model.Veiculo;
 
 public interface IVeiculos {
 	
-	public void cadastrarVeiculo(Veiculo veiculo);	
-	
-	public String infoVeiculo (Veiculo veiculo);
-	
+	public boolean create(Veiculo veiculo);	
 	public Veiculo findByChassis(String chassis);
-	
-	public void atualizarCadastroVeiculo (Veiculo veiculo);
-	
-	public void removerCadastroVeiculo (Veiculo veiculo);
+	public List<Veiculo> findByCliente (Cliente cliente);
+	public List<Veiculo> findAll (Cliente cliente);
+	public boolean updateVeiculo (Veiculo veiculo);
+	public boolean deleteVeiculo(Veiculo veiculo);
 	
 	
 }

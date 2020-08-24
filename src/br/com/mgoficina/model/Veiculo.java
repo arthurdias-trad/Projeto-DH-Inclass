@@ -94,5 +94,17 @@ public class Veiculo {
 		return other.chassi.equals(this.chassi);
 	}
 	
-	
+	@Override
+	public String toString() {
+		StringBuilder string = new StringBuilder();
+		string.append("Proprietário: " + this.getProprietario() + "\n");
+		string.append("Tipo de Veículo: " + this.getTipoDeVeiculo() + "\n");
+		string.append("Modelo: " + this.getModelo() + "\n");
+		string.append("Ano: " + this.getAno() + "\n");
+		string.append("Cor: " + this.getCor() + "\n");
+		string.append("Placa do Veículo: " + this.getPlacaDoVeiculo() + "\n");
+		string.append("Chassi: " + this.getChassi());
+		return string.toString();		
+}
+
 }

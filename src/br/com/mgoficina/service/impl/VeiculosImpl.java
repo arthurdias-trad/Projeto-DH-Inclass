@@ -2,8 +2,6 @@ package br.com.mgoficina.service.impl;
 import br.com.mgoficina.model.Cliente;
 import br.com.mgoficina.model.Veiculo;
 import br.com.mgoficina.service.IVeiculos;
-
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -29,63 +27,57 @@ public class VeiculosImpl implements IVeiculos {
 	}
 
 	@Override
-	public void cadastrarVeiculo(Veiculo veiculo) {
-		// TODO Auto-generated method stub
-		this.veiculos.add(veiculo); 
-				
-	}
-
-	@Override
-	public String infoVeiculo(Veiculo veiculo) {
-		// TODO Auto-generated method stub
-		
-		String placaDoVeiculo = veiculo.getPlacaDoVeiculo();
-		String modelo = veiculo.getModelo();
-		String cor = veiculo.getCor(); 
-		LocalDate ano = veiculo.getAno();
-		String chassi = veiculo.getChassi();
-		String tipoDeVeiculo = veiculo.getTipoDeVeiculo();
-				
-		String info = 
-		tipoDeVeiculo + "/n" + 
-		"Modelo: " + modelo + "/n" +
-		"Ano: " + ano + "/n" +
-		"Cor: " + cor + "/n" +
-		"Placa do Veículo: " + placaDoVeiculo + "/n" +
-		"Chassi: " + chassi;
-		return info;
-		}
+	public boolean create(Veiculo veiculo) {
+		boolean veiculoBemDefinido = false;
+		if (veiculo.getAno() != null &&
+			  veiculo.getChassi() != null &&
+				veiculo.getCor() != null &&
+				  veiculo.getModelo() != null &&
+					veiculo.getPlacaDoVeiculo() != null &&
+					  veiculo.getProprietario() != null &&
+						veiculo.getTipoDeVeiculo() != null) {
+			this.veiculos.add(veiculo); 
+			veiculoBemDefinido = true;} 
+		return veiculoBemDefinido;}
 	
 	@Override
 	public Veiculo findByChassis(String chassis) {
-		// TODO Auto-generated method stub
-		return null;
+		for (Veiculo veiculo: this.veiculos) {
+			if (veiculo.getChassi().equals(chassis)) {
+				return veiculo;
+			}			
+		} return null;
 	} 
 
 	@Override
-	public void atualizarCadastroVeiculo(Veiculo veiculo) {
-		// TODO Auto-generated method stub
-		if (this.veiculos.contains(veiculo)) {
-			int indice = this.veiculos.indexOf(veiculo);
-			veiculos.remove(indice);
-			veiculos.add(indice, veiculo);
-		} else {
-			System.out.println("Veiculo ainda não consta no sistema");
-		}
-}
+	public List<Veiculo> findByCliente(Cliente cliente) {
+		return Collections.unmodifiableList(cliente.getVeiculos());
+	}
 
 	@Override
-	public void removerCadastroVeiculo(Veiculo veiculo) {
-		// TODO Auto-generated method stub
-		if (this.veiculos.contains(veiculo)) {
-			int indice = this.veiculos.indexOf(veiculo);
-			veiculos.remove(indice);
-			System.out.println("Veículo removido com sucesso");
-		} else {
-			System.out.println("Veiculo ainda não cadastrado no sistema");
-		}
-		
+	public List<Veiculo> findAll(Cliente cliente) {
+		return Collections.unmodifiableList(this.veiculos);
 	}
 	
+
+	@Override
+	public boolean updateVeiculo(Veiculo veiculo) {
+		if (this.veiculos.contains(veiculo)) {
+			int indiceDoObjeto = this.veiculos.indexOf(veiculo);
+			this.veiculos.remove(indiceDoObjeto);
+			this.veiculos.add(indiceDoObjeto, veiculo);
+			return true;
+		}
+		return false;
+	}
+	
+	@Override
+	public boolean deleteVeiculo(Veiculo veiculo) {
+		if(this.veiculos.contains(veiculo)) {
+			this.veiculos.remove(veiculo);
+			return true;
+		}
+		return false;
+	}
 
 }
