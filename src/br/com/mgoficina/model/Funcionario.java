@@ -13,14 +13,14 @@ public class Funcionario {
 	private UUID idDoFuncionario;
 	private List<Servico> servicos;
 	
-	public Funcionario(String nome, String cpf, int idade, char sexo, String cargo, UUID idDoFuncionario) {
+	public Funcionario(String nome, String cpf, int idade, char sexo, String cargo){
 		super();
 		this.nome = nome;
 		this.cpf = cpf;
 		this.idade = idade;
 		this.sexo = sexo;
 		this.cargo = cargo;
-		this.idDoFuncionario = idDoFuncionario;
+		this.idDoFuncionario = null;
 	}
 
 	public String getNome() {
