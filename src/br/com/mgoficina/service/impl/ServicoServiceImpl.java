@@ -5,6 +5,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
+import br.com.mgoficina.exception.MissingDataException;
+import br.com.mgoficina.exception.ObjectNotFoundException;
 import br.com.mgoficina.model.Cliente;
 import br.com.mgoficina.model.Servico;
 import br.com.mgoficina.service.IServicoService;
@@ -34,19 +36,22 @@ public class ServicoServiceImpl implements IServicoService {
 	}
 
 	@Override
-	public Servico findById(UUID idDaOrdem) {
+	public Servico findById(UUID idDaOrdem) throws ObjectNotFoundException{
 		for(Servico servico: this.servicos) {
 			if (servico.getIdDoServico().equals(idDaOrdem)) {
 				return servico;
 			}
 		}
-		return null;
+		 throw new ObjectNotFoundException("Serviço");
 	}
 
 	@Override
-	public List<Servico> findByCliente(Cliente cliente) {
+	public List<Servico> findByCliente(Cliente cliente)  throws MissingDataException{
+		if (cliente.getServicos().size() == 0) {
+			throw new MissingDataException("Cliente ainda não realizou nenhum serviço");
+		} else {
 		return Collections.unmodifiableList(cliente.getServicos());
-	}
+	}}
 
 	@Override
 	public List<Servico> findAll() {

@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.UUID;
 
 import br.com.mgoficina.exception.DataIntegrityException;
+import br.com.mgoficina.exception.ObjectNotFoundException;
 import br.com.mgoficina.model.Cliente;
 import br.com.mgoficina.service.IClienteService;
 
@@ -32,26 +33,24 @@ public class ClienteServiceImpl implements IClienteService{
 	}
 
 	@Override
-	public Cliente findClienteById(UUID idDoCliente) {
+	public Cliente findClienteById(UUID idDoCliente)throws ObjectNotFoundException {
 		for(Cliente cliente: this.clientes) {
 			if(cliente.getIdDoCliente().equals(idDoCliente)) {
 				return cliente;
 			}
 		}
-		
-		return null;
+		throw new ObjectNotFoundException("Cliente");
 	}
 
 	@Override
-	public Cliente findClienteByNome(String nome) {
+	public Cliente findClienteByNome(String nome) throws ObjectNotFoundException  {
 		
 		for(Cliente cliente: this.clientes) {
 			if(cliente.getNome().equals(nome)) {
 				return cliente;
 			}
 		}
-		
-		return null;
+		throw new ObjectNotFoundException("Cliente");
 	}
 
 	@Override
