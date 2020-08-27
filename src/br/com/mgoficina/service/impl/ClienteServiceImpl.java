@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
+import br.com.mgoficina.exception.DataIntegrityException;
 import br.com.mgoficina.model.Cliente;
 import br.com.mgoficina.service.IClienteService;
 
@@ -21,7 +22,10 @@ public class ClienteServiceImpl implements IClienteService{
 	
 	
 	@Override
-	public Cliente create(Cliente cliente) {
+	public Cliente create(Cliente cliente) throws DataIntegrityException {
+		if(cliente.getIdade() < 18) {
+			throw new DataIntegrityException("idade");
+		}
 		cliente.setIdDoCliente(UUID.randomUUID());
 		this.clientes.add(cliente);
 		return cliente;
