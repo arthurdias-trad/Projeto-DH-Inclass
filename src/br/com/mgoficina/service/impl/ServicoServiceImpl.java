@@ -23,6 +23,12 @@ public class ServicoServiceImpl implements IServicoService {
 	@Override
 	public Servico create(Servico servico) {
 		servico.setIdDoServico(UUID.randomUUID());
+		
+		Cliente clienteDoServico = servico.getCliente();
+		ArrayList<Servico> servicosDoCliente = clienteDoServico.getServicos();
+		servicosDoCliente.add(servico);
+		
+//		servico.getCliente().getServicos().add(servico);
 		servicos.add(servico);
 		return servico;
 	}
@@ -39,13 +45,7 @@ public class ServicoServiceImpl implements IServicoService {
 
 	@Override
 	public List<Servico> findByCliente(Cliente cliente) {
-		ArrayList<Servico> servicosDoCliente = new ArrayList<Servico>();
-		for(Servico servico: this.servicos) {
-			if (cliente.equals(servico.getCliente())) {
-				servicosDoCliente.add(servico);
-			}
-		}
-		return Collections.unmodifiableList(servicosDoCliente);
+		return Collections.unmodifiableList(cliente.getServicos());
 	}
 
 	@Override

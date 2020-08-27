@@ -11,6 +11,7 @@ public class Cliente {
 	private char sexo;
 	private UUID idDoCliente;
 	private ArrayList<Veiculo> veiculos;
+	private ArrayList<Servico> servicos;
 	
 	public Cliente(String nome, String cpf, int idade, char sexo, ArrayList<Veiculo> veiculos) {
 		super();
@@ -20,6 +21,7 @@ public class Cliente {
 		this.sexo = sexo;
 		this.veiculos = veiculos;
 		this.idDoCliente = null;
+		this.servicos = new ArrayList<Servico>();
 	}
 
 	public String getNome() {
@@ -70,6 +72,14 @@ public class Cliente {
 		this.idDoCliente = idDoCliente;
 	}
 	
+	public ArrayList<Servico> getServicos() {
+		return servicos;
+	}
+
+	public void setServicos(ArrayList<Servico> servicos) {
+		this.servicos = servicos;
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (obj == this) {

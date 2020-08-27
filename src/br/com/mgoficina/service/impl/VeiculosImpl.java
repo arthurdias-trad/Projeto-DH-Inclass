@@ -2,6 +2,8 @@ package br.com.mgoficina.service.impl;
 import br.com.mgoficina.model.Cliente;
 import br.com.mgoficina.model.Veiculo;
 import br.com.mgoficina.service.IVeiculos;
+import exception.MissingDataException;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -27,8 +29,8 @@ public class VeiculosImpl implements IVeiculos {
 	}
 
 	@Override
-	public boolean create(Veiculo veiculo) {
-		boolean veiculoBemDefinido = false;
+	public Veiculo create(Veiculo veiculo) throws MissingDataException {
+		
 		if (veiculo.getAno() != null &&
 			  veiculo.getChassi() != null &&
 				veiculo.getCor() != null &&
@@ -37,8 +39,11 @@ public class VeiculosImpl implements IVeiculos {
 					  veiculo.getProprietario() != null &&
 						veiculo.getTipoDeVeiculo() != null) {
 			this.veiculos.add(veiculo); 
-			veiculoBemDefinido = true;} 
-		return veiculoBemDefinido;}
+			return veiculo;
+			} else {
+				throw new MissingDataException("Todos os campos de criação do veículo devem ser preenchidos");
+			}
+		} 
 	
 	@Override
 	public Veiculo findByChassis(String chassis) {
@@ -55,7 +60,7 @@ public class VeiculosImpl implements IVeiculos {
 	}
 
 	@Override
-	public List<Veiculo> findAll(Cliente cliente) {
+	public List<Veiculo> findAll() {
 		return Collections.unmodifiableList(this.veiculos);
 	}
 	
