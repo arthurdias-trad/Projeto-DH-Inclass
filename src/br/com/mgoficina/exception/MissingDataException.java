@@ -1,4 +1,4 @@
-package exception;
+package br.com.mgoficina.exception;
 
 public class MissingDataException extends RuntimeException {
 

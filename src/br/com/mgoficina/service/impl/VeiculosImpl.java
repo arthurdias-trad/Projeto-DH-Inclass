@@ -1,8 +1,8 @@
 package br.com.mgoficina.service.impl;
+import br.com.mgoficina.exception.MissingDataException;
 import br.com.mgoficina.model.Cliente;
 import br.com.mgoficina.model.Veiculo;
 import br.com.mgoficina.service.IVeiculos;
-import exception.MissingDataException;
 
 import java.util.ArrayList;
 import java.util.Collections;
