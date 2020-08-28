@@ -79,6 +79,10 @@ public class Cliente {
 	public void setServicos(ArrayList<Servico> servicos) {
 		this.servicos = servicos;
 	}
+	
+	public void addServico(Servico servico) {
+		this.servicos.add(servico);
+	}
 
 	@Override
 	public boolean equals(Object obj) {

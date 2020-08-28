@@ -24,11 +24,8 @@ public class ServicoServiceImpl implements IServicoService {
 	public Servico create(Servico servico) {
 		servico.setIdDoServico(UUID.randomUUID());
 		
-		Cliente clienteDoServico = servico.getCliente();
-		ArrayList<Servico> servicosDoCliente = clienteDoServico.getServicos();
-		servicosDoCliente.add(servico);
+		servico.getCliente().addServico(servico);
 		
-//		servico.getCliente().getServicos().add(servico);
 		servicos.add(servico);
 		return servico;
 	}
